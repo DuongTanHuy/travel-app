@@ -1,13 +1,34 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Slides } from "../../components";
 
 export default function Onboarding() {
+  const slides = [
+    {
+      id: 1,
+      image: require("../../assets/images/1.png"),
+      title: "Find the perfect place to stay",
+    },
+    {
+      id: 2,
+      image: require("../../assets/images/2.png"),
+      title: "Book a room at a great price",
+    },
+    {
+      id: 3,
+      image: require("../../assets/images/3.png"),
+      title: "Enjoy your stay",
+    },
+  ];
+
   return (
-    <SafeAreaView>
-      <Text>Onboarding</Text>
-    </SafeAreaView>
+    <FlatList
+      pagingEnabled
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      data={slides}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => <Slides item={item} />}
+    />
   );
 }
-
-const styles = StyleSheet.create({});
